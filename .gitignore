@@ -1,0 +1,18 @@
+# Maven
+target
+
+# Eclipse
+.classpath
+.project
+.settings/
+.externalToolBuilders/
+
+# MacOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Otros
+*.class
+*.mp3
