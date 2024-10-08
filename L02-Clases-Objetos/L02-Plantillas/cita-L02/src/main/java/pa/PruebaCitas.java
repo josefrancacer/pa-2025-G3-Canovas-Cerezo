@@ -18,7 +18,6 @@ public class PruebaCitas {
 		Cita[] citas = new Cita[6];
 		for (int i = 0; i<=5; i++) {
 			citas[i] = new Cita();
-			citas[i].imprimir();
 			citas[i].setFranjaHoraria(horas_aleatorias.nextInt(0,24),horas_aleatorias.nextInt(0,24));
 			citas[i].imprimir();
 		}
