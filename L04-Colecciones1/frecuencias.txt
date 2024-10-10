@@ -1,0 +1,6 @@
+Ejemplo de cálculo de la parte entera de una variable con decimales:
+
+float numero_con_decimales = 4.57f;
+float parte_decimal =  numero % 1; 
+int parte_entera = (int)(numero_con_decimales - parte_decimal)
+	}
