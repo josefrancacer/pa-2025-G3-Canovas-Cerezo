@@ -9,10 +9,9 @@ import javax.swing.JComponent;
 import pa.imagen.OFImage;
 
 /**
- * An ImagePanel is a Swing component that can display an OFImage.
- * It is constructed as a subclass of JComponent with the added functionality
- * of setting an OFImage that will be displayed on the surface of this
- * component.
+ * 
+ * 
+ * Un ImagePanel es un componente Swing que puede mostrar un OFImage.
  * 
  * @author Michael Kölling and David J. Barnes.
  * @version 1.0
