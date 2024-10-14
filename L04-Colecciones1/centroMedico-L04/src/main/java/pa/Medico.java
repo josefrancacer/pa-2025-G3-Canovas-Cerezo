@@ -91,9 +91,9 @@ public class Medico {
      * @return true, si se trata de una franja válida, y false en caso contrario
      */
     private boolean franjaValida(String franja) {
-    	boolean valido;
+    	boolean valido = false;
         if(franja.equals("mañana") || franja.equals("tarde")) {
-        	valido = true
+        	valido = true;
         }
         return valido;
     }
@@ -111,8 +111,39 @@ public class Medico {
      * o bien el día especificado es inválido o la franja especificada es inválida 
      */
     public Cita reservarCita(int dia, String franja, String paciente) {
-        Cita cita = null;
-        
+    	int hora;
+    	Cita cita = null;
+    	if(this.diaValido(dia)&& this.franjaValida(franja)) {
+    		int i = 0;
+    		boolean horario_cubierto = false;
+    		if(franja.equals("mañana")) {
+    			while(!(horario[dia][i] == null)&& (i<4)) {
+        			i++;
+        			if(i == 4) {
+        				horario_cubierto = true;
+        				
+        			}
+        		}
+    		}else {
+    			i = 4;
+    			while(!(horario[dia][i] == null) && (i<8)) {
+            			i++;
+            			if(i == 8) {
+            				horario_cubierto = true;
+            			}
+    		}}
+    		if(!horario_cubierto) {
+    			horario[dia][i] = paciente;
+    			hora = i;
+        		cita = new Cita(paciente, this.getIdMedico(), this.getEspecialidad(), this.dia(dia),this.hora(i));
+    		}else {
+    			System.out.println("Cita no posible para " + paciente);
+    		}
+    		
+    	} else {
+    		System.out.println("Cita no posible para " + paciente);
+    	}
+    	
         return cita;    
     }
     
@@ -138,7 +169,12 @@ public class Medico {
     	for(int i = 0; i<=4; i++) {
     		System.out.printf("%-11s", this.dia(i));
     		for( int j = 0; j<= 7; j++) {
-    			System.out.printf("%-7s", espacio);
+    			if(this.horario[i][j] == null) {
+    				System.out.printf("%-7s", espacio);
+    			} else {
+    				System.out.printf("%-7s", this.horario[i][j]);
+    			}
+    			
     		}
     		System.out.println("");
     	}
