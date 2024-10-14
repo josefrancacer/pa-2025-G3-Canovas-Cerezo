@@ -76,8 +76,13 @@ public class Medico {
      * @return devuelve true si se trata de un día válido, y false en caso contrario
      */
     private boolean diaValido(int dia) {
-        
-        return false;
+        boolean valido;
+        if(dia >= 0 && dia <= 4) {
+        	valido = true;
+        } else {
+        	valido = false;
+        }
+        return valido;
     }
     
     /**
@@ -86,8 +91,11 @@ public class Medico {
      * @return true, si se trata de una franja válida, y false en caso contrario
      */
     private boolean franjaValida(String franja) {
-        
-        return false;
+    	boolean valido;
+        if(franja.equals("mañana") || franja.equals("tarde")) {
+        	valido = true
+        }
+        return valido;
     }
     
     /**
@@ -119,8 +127,23 @@ public class Medico {
      * ninguna cita asignada
      */ 
     public void printHorario() {
+    	System.out.print("Horario del doctor: " + this.getIdMedico() + "\t");
+    	System.out.println("Especialidad : " + this.getEspecialidad());
+    	System.out.print("           ");
+    	String espacio = "---";
+    	for(int i = 0; i<= 7; i++) {
+    		System.out.printf("%-7s", this.hora(i));
+    	}
+    	System.out.println("");
+    	for(int i = 0; i<=4; i++) {
+    		System.out.printf("%-11s", this.dia(i));
+    		for( int j = 0; j<= 7; j++) {
+    			System.out.printf("%-7s", espacio);
+    		}
+    		System.out.println("");
+    	}
+    	
         
-        System.out.println("Método sin implementar");
         
     }
     
@@ -131,8 +154,15 @@ public class Medico {
      * Si el valor numérico introducido no se corresponde con ningún día se devuelve una cadena vacía
      */
     private String dia(int indice) {
+    	String dia;
+    	if(this.diaValido(indice)) {
+    		String [] dias = new String[] {"Lunes","Martes", "Miércoles", "Jueves", "Viernes"};
+    		dia = dias[indice];
+    	}else {
+    		dia = "";
+    	}
         
-        return "Método sin implementar";
+        return dia;
     }
     /**
      * Método que devuelve la cadena de caracteres asociada al valor numérico correspondiente
@@ -141,8 +171,14 @@ public class Medico {
      * Si el valor numérico introducido no se corresponde con ningún día se devuelve una cadena vacía
      */
     private String hora(int indice) {
-        
-        return "Método sin implementar";
+        String hora;
+        if(indice >= 0 && indice <= 7 ) {
+        	String [] horas = new String[] {"9:00h","10:00h", "11:00h", "12:00h","16:00h","17:00h","18:00h","19:00h"};
+        	hora = horas[indice];
+        }else {
+        	hora = "";
+        }
+        return hora;
     }
         
 }
