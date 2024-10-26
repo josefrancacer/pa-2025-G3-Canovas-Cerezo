@@ -39,7 +39,7 @@ public class PlayerModoTexto {
 			reproductor.startPlaying(num_index);
 			System.out.println("Voy a reproducir el tema ");
 			reproductor.printTitleName(num_index-1);
-			System.out.println("Pulse enter para parar la canción..." + (num_index-1));
+			System.out.println("Pulse enter para parar la canción...");
 			s.nextLine();
 			reproductor.stopPlaying();
 			System.out.println("Reproductor detenido");
