@@ -25,7 +25,7 @@ public class EntradaDesdeFichero  {
 		
 	}
 	
-	@Override
+	//@Override
     public int[] obtenerDatos() {
 		
 		/* The method Files.readAllLines returns a list of all lines 

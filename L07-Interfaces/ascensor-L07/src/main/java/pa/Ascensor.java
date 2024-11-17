@@ -1,4 +1,4 @@
-package pa.sinInterfaces;
+package pa;
 
 import java.util.ArrayList;
 import java.util.Iterator;

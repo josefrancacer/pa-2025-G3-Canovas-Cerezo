@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pa.sinInterfaces;
+package pa;
 
 import java.util.ArrayList;
 
@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * 
  * @author eli
  */
-public class DemoSinInterfaces {
+public class DemoConInterfaces {
 
     
     public static void main(String[] args) {
