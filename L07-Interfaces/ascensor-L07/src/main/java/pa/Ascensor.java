@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
 
+import pa.sinInterfaces.Peticion;
+
 
 /**
  * Un ascensor tendrá los siguientes atributos:
@@ -21,17 +23,28 @@ public class Ascensor {
 	private ArrayList<Peticion> peticiones;
 	private ArrayList<Peticion> peticiones_validas;
 	private int piso_actual;
-	private Scanner lector_peticiones;
+	private String entrada;
+	private IAccesoDatos entrada_datos;
 	private static final int MAX_PISOS = 20;
 	private static final int MAX_PERSONAS = 4;
 	//declaración de atributos. Son todos privados.
 	
 	
-	public Ascensor() {
+	public Ascensor(String entrada) {
 		peticiones = new ArrayList<Peticion>();
 		peticiones_validas = new ArrayList<Peticion>();
 		piso_actual = 0;
-		lector_peticiones = new Scanner(System.in);
+		this.entrada = entrada;
+		if(entrada.equals("terminal")) {
+			entrada_datos = new EntradaDesdeTeclado();
+		}else {
+			if(entrada.equals("fichero")) {
+				entrada_datos = new EntradaDesdeFichero();
+			}
+			else {
+				System.out.println("El método de entrada de datos no es correcto");
+			}
+		}
 		
 	}
 
@@ -84,15 +97,7 @@ public class Ascensor {
 	 * El método leer_peticiones devuelve el número de peticiones leídas.
 	 */
 	public int leer_peticiones() {
-		System.out.println("\n---------------------------------");
-		System.out.println("Estoy en el piso: "); //aquí añadiremos el piso_actual);
-		System.out.println("Puertas abiertas. Espero peticiones: ");
-		while(lector_peticiones.hasNextInt()) {
-			int num_piso = lector_peticiones.nextInt();
-			peticiones.add(new Peticion(num_piso));
-		}
-		lector_peticiones.nextLine();
-		
+		int [] peticiones = entrada_datos.obtenerDatos();
 		
 		//aquí leemos los pisos de destino. Usaremos los métodos hasNextInt() y nextInt() de la clase Scanner
 		//para cada dato leido crearemos el objeto Peticion correspondiente, y lo añadiremos a la lista
@@ -102,7 +107,7 @@ public class Ascensor {
 		//"leeremos" el carácter 'A' y el retorno de carro
 		//lector_peticiones.nextLine();
 		
-		return peticiones.size(); //aquí devolveremos el número de peticiones que hemos leído	
+		return peticiones.length; //aquí devolveremos el número de peticiones que hemos leído	
 	}
 	
 	/**

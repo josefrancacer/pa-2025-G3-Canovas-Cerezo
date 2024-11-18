@@ -33,7 +33,7 @@ public class DemoConInterfaces {
        
        // Version sin interfaces
        
-       Ascensor ascensor = new Ascensor(); 
+       Ascensor ascensor = new Ascensor(args[0]); 
        do {
     	   num_peticiones= ascensor.leer_peticiones();
 	       num_peticiones_con_avisos = ascensor.analizar_peticiones();

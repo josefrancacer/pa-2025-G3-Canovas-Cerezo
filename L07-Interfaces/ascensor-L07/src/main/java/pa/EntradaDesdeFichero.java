@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-public class EntradaDesdeFichero  {
+public class EntradaDesdeFichero implements IAccesoDatos {
 	private int linea_actual;
 	private String ruta_fichero;
 	private int num_lineas_fichero;
