@@ -1,0 +1,6 @@
+Fecha         Servicio        Importe   
+----------------------------------------
+2023-09-21    operacion       300.75    
+2023-09-25    habitacion      200.75    
+2023-09-21    anestesia       500.0     
+Total importe: 1001.5

@@ -1,0 +1,9 @@
+Fecha         Servicio        Importe   
+----------------------------------------
+2023-04-18    radiografia     550.15    
+2023-09-21    ecografia       440.75    
+2023-03-14    analitica       125.75    
+2023-04-18    radiografia     550.15    
+2023-09-21    ecografia       440.75    
+2023-03-14    densitometria   125.75    
+Total importe: 2233.3
