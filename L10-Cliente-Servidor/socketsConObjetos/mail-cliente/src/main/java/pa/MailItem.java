@@ -1,4 +1,5 @@
 package pa;
+import java.io.Serializable;
 
 /**
  * A class to model a simple mail item. The item has sender and recipient
@@ -7,13 +8,14 @@ package pa;
  * @author David J. Barnes and Michael Kölling
  * @version 2016.02.29
  */
-public class MailItem {
+public class MailItem implements Serializable {
     // The sender of the item.
     private String from;
     // The intended recipient.
     private String to;
     // The text of the message.
     private String message;
+    private static final long serialVersionUID = 1234567L;
 
     
     public MailItem(){}
