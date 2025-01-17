@@ -25,7 +25,7 @@ public class MailServerSocket {
 		for(int i = 0; i<numCorreos; i++) {
 			MailItem correo = servidorCorreo.getNextMailItem(user);
 			out.writeObject(correo);
-			out.writeUTF("Mensaje: " + correo.getMessage());
+			System.out.println("Mensaje: " + correo.getMessage());
 		}
 		
 	}
@@ -39,7 +39,8 @@ public class MailServerSocket {
 		System.out.println("Mensaje recibido");
 		servidorCorreo.post(correo);
 		System.out.println("Mensaje añadido");
-		servirMensajes(correo.getTo(), out);
+		out.writeUTF("Mensaje enviado con éxito");
+		out.flush();
 		
 	}
 	public static void main(String[] args) {
@@ -52,20 +53,23 @@ public class MailServerSocket {
 			MailServerSocket mailServer = new MailServerSocket(new ArrayList<MailItem>());
 			System.out.println("Servidor de correo en marcha en el puerto: " + server.getLocalPort());
 			System.out.println("Acabo de conectar con: " + server.getPort());
-			String user = in.readUTF();
-			System.out.println(user + " ha accedido al sistema");
 			int num_peticion;
 			do {
+				String user = in.readUTF();
+				System.out.println(user + " ha accedido al sistema");
 				out.writeUTF("Indique la operacion a realizar: \n"
 						+ "1. Consultar mensajes recibidos \n"
 						+ "2.Enviar un mensaje \n"
 						+ "Teclee opción: (Para terminar teclee cualquier otro valor)");
+				out.flush();
 				num_peticion = in.readInt();
 				switch(num_peticion) {
 				case 1:
 					mailServer.servirMensajes(user, out);
+					break;
 				case 2:
-					mailServer.recibirMensajes(user, out, in);	
+					mailServer.recibirMensajes(user, out, in);
+					break;
 				}
 			}while(num_peticion == 1 || num_peticion == 2);
 			

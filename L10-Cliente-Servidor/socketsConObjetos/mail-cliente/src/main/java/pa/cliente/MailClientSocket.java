@@ -12,13 +12,15 @@ public class MailClientSocket {
 
 		public void enviarMensajes(String user, ObjectOutputStream out, ObjectInputStream in) throws IOException, ClassNotFoundException{
 			Scanner sc = new Scanner(System.in);
-			in.readUTF();
+			System.out.println(in.readUTF());
 			String sendTo = sc.nextLine();
-			in.readUTF();
+			System.out.println(in.readUTF());
 			String mensaje = sc.nextLine();
 			MailItem enviar = new MailItem(user, sendTo, mensaje);
 			out.writeObject(enviar);
-			System.out.println(in.readUTF());
+			out.flush();
+			String confirmar = in.readUTF();
+			System.out.println(confirmar);
 		}
 		public void recibirMensajes(String user, ObjectInputStream in) throws IOException, ClassNotFoundException {
 			int num_correos = in.readInt();
@@ -39,21 +41,25 @@ public class MailClientSocket {
 					ObjectOutputStream out= new ObjectOutputStream(client.getOutputStream());
 					ObjectInputStream in = new ObjectInputStream(client.getInputStream());
 					Scanner s = new Scanner(System.in)){
-					MailClientSocket clientSocket = new MailCLientSocket();
+					MailClientSocket clientSocket = new MailClientSocket();
+					int opcion;
 				do {
 					System.out.println("Introduce tu nombre: ");
 					String user = s.nextLine();
 					out.writeUTF(user);
 					out.flush();
-					in.readUTF();
-					int opcion = s.nextInt();
+					System.out.println(in.readUTF());
+					opcion = s.nextInt();
+					s.nextLine();
 					out.writeInt(opcion);
 					out.flush();
 					switch(opcion) {
 					case 1:
 						clientSocket.recibirMensajes(user, in);
+						break;
 					case 2:
-						clientSocket.enviarMensajes(user, out, in);	
+						clientSocket.enviarMensajes(user, out, in);
+						break;
 					}
 				}while(opcion == 1 || opcion == 2);
 				
@@ -62,6 +68,8 @@ public class MailClientSocket {
 				
 				
 			}catch(IOException ex) {
+				
+			}catch(ClassNotFoundException ex) {
 				
 			}
 		}
