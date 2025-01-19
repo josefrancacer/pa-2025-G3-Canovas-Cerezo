@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- la etiqueta style debe estar anidada en head 
+         fieldset, table, th, td  son los nombres de las
+         etiqueta a la que se aplicará el estilo-->
+    <style> 
+        fieldset {
+            background-color: #eeeeee;
+        }
+        table, th, td {
+            border: 1px solid black;
+			border-collapse: collapse;
+			text-align: center;
+			vertical-align: middle;
+        }
+        th {
+          background-color: #F6F867
+        }
+    </style>  
+  </head>
+  
+  <body>
+     
+      <fieldset>
+        <legend>Asignatura</legend>
+        Nombre: <input type="text" value="Programación Avanzada" readonly><br>
+        Profesorado: <input type="text" value="Eli, Jose Antonio"readonly><br>
+      </fieldset>
+    
+    <h3>Horario:</h3>
+    <table>
+	  <thead> <!--cabecera-->	
+	        <th style="width:100px">Dia</th>
+	        <th style="width:50px">Hora</th>
+	        <th style="width:100px">Lugar</th>
+	  <thead>	 
+	  <tbody>	   
+	      <tr> <!-- fila 1 -->
+	        <td>Martes</td>
+	        <td>15:00h a 17:00h</td>
+	        <td>L03</td>
+	      </tr>
+	      <tr> <!-- fila 2 -->
+	        <td>Miércoles</td>
+	        <td>15:00h a 17:00h</td>
+	        <td>A2/C02</td>
+	      </tr>
+	      <tr> <!-- fila 3 -->
+	        <td>Jueves</td>
+	        <td>16:18h</td>
+	        <td>L25</td>
+	      </tr>
+	   </tbody>	     
+    </table>
+    <br>
+    <a href="paginaInicial.html">Volver a página inicial</a>
+  </body>
+</html>

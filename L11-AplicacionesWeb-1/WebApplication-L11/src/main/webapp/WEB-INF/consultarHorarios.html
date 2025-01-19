@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- la etiqueta style debe estar anidada en head 
+         fieldset es el nombre de la etiqueta a la que se aplicará el estilo-->
+    <title>Consulta Horarios</title>
+  </head>
+  
+  <body>	 
+	  <p>Consulta de horarios de asignaturas:</p>
+	  
+	  <form name="asignaturas" method="POST" action="UrlServlet2">
+	    <label for="asignaturas">Elija la asignatura:</label>
+	    <!-- "select" se renderiza como un desplegable 
+	         con tantas opciones como elementos "option" tenga-->
+        <select name="asignatura" id="asignaturas">
+         	<option value="ELEC">Electronica</option>
+          	<option value="PA">Programacion Avanzada</option>
+          	<option value="BD">Bases de datos</option>         
+          	<option value="FISIO">Fisiopatologia</option>
+        </select>
+	    <br><br> <!-- añadimos dos saltos de línea -->
+	    <input type="submit" value="Enviar"> <!-- botón para enviar los datos -->
+	    <!-- cuando el usuario pulse el botón "Enviar", se
+	         enviará la asignatura seleccionada al método POST
+	         del servlet "UrlServlet2". Es una ruta relativa a la
+	         raiz de contexto -->
+	  </form>
+	<br><br> 
+    <a href="paginaInicial.html">Volver a página inicial</a>
+  </body>
+</html>
